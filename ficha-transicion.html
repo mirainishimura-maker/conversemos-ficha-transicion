@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ficha de Transición y Continuidad Terapéutica — Conversemos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ===== KIT DE MARCA CONVERSEMOS (oficial — gama monocromática celeste) ===== */
+      --celeste: #00b8d8;        /* Celeste 1 — primario  (R0 G184 B216) */
+      --celeste-claro: #d7f4fa;  /* Celeste 2 — fondos suaves (R215 G244 B250) */
+      --gris: #6e6e6e;           /* Gris  (R110 G110 B110) */
+      --negro: #343434;          /* Negro (R52 G52 B52) */
+      --blanco: #ffffff;         /* Blanco */
+      /* Sombras del celeste (misma gama monocromática, para títulos/profundidad) */
+      --celeste-texto: #0a7d92;  /* sombra del celeste — títulos y acentos */
+      --celeste-oscuro: #006d80; /* sombra profunda — degradados */
+      /* Alias internos: todo apunta a la gama celeste de la marca */
+      --morado: #0a7d92; --morado-claro: #d7f4fa; --morado-oscuro: #343434;
+      --dorado: #d7f4fa; --dorado-suave: #eaf9fc; --lila: #9fe1ee;
+      --verde: #2e7d5b; --verde-bg: #e8f5ee;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(160deg, #00b8d8 0%, #0089a3 55%, #006d80 100%);
+      color: var(--negro); margin: 0; padding: 12px; line-height: 1.6;
+      min-height: 100vh; min-height: 100dvh;
+    }
+    .container {
+      max-width: 640px; margin: 14px auto; background: var(--blanco);
+      padding: 30px 22px; border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(0,137,163,0.22);
+    }
+    .hidden { display: none !important; }
+
+    /* ===== ENCABEZADO / MARCA ===== */
+    .brand-badge { text-align: center; margin-bottom: 6px; }
+    .brand-badge .collab {
+      display: inline-block; background: var(--negro); color: var(--celeste-claro);
+      padding: 6px 16px; border-radius: 50px; font-size: 9px; letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+    .brand-badge .collab .itaca { color: var(--celeste); }
+
+    /* Wordmark provisional del logo. Cuando tengas el PNG/base64 oficial,
+       reemplaza este bloque .logo-conver por:
+       <div class="logo-conver"><img src="LOGO.png" alt="Conversemos"></div>
+       o pega el data:image/png;base64,... en una <img>. */
+    .logo-conver {
+      text-align: center; margin: 6px 0 2px 0;
+    }
+    .logo-conver .nombre {
+      font-family: 'Playfair Display', serif; color: var(--morado);
+      font-size: 30px; font-weight: 700; letter-spacing: 0.5px; line-height: 1;
+    }
+    .logo-conver .nombre .acento { color: var(--celeste); }
+    .logo-conver .sub {
+      font-size: 9px; letter-spacing: 3px; color: var(--gris);
+      font-weight: 600; text-transform: uppercase; margin-top: 4px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif; color: var(--morado);
+      text-align: center; font-weight: 700; font-size: 21px;
+      line-height: 1.3; margin: 16px 0 4px 0;
+    }
+    .intro {
+      text-align: center; color: var(--gris); font-size: 12.5px;
+      max-width: 460px; margin: 0 auto 18px auto;
+    }
+
+    .section-header {
+      font-family: 'Playfair Display', serif; color: var(--morado);
+      font-size: 16px; font-weight: 600; line-height: 1.3;
+      padding: 11px 14px; border-radius: 12px; margin: 28px 0 14px 0;
+      background: var(--morado-claro);
+    }
+    .section-header.celeste { background: var(--celeste-claro); color: var(--celeste-texto); }
+    .helper {
+      font-size: 11.5px; color: var(--gris); margin: -6px 0 12px 2px; line-height: 1.45;
+    }
+
+    /* ===== CAMPOS ===== */
+    label.field-label {
+      font-size: 13px; font-weight: 600; color: var(--negro);
+      margin-top: 12px; display: block;
+    }
+    input[type="text"], input[type="number"], input[type="date"], textarea {
+      width: 100%; padding: 13px 14px; margin: 6px 0 4px 0;
+      border: 1.5px solid #e8e0f0; border-radius: 12px;
+      font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--negro);
+      background: #fcfaff; -webkit-appearance: none; appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    textarea { min-height: 84px; resize: vertical; line-height: 1.55; }
+    input:focus, textarea:focus {
+      outline: none; border-color: var(--morado); background: #fff;
+      box-shadow: 0 0 0 3px rgba(0,184,216,0.15);
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+    @media (max-width: 480px){ .grid-2 { grid-template-columns: 1fr; } }
+
+    /* ===== OPCIONES (radios tipo tarjeta) ===== */
+    .opt-list { display: grid; gap: 8px; margin-top: 4px; }
+    .opt {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; background: #faf8fc; border: 1.5px solid #e8e0f0;
+      border-radius: 12px; cursor: pointer; font-size: 14px;
+      transition: 0.15s; min-height: 50px;
+    }
+    .opt:hover { background: var(--morado-claro); }
+    .opt .dot {
+      width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--lila);
+      flex: 0 0 auto; position: relative; transition: 0.15s;
+    }
+    .opt input { display: none; }
+    .opt input:checked ~ .txt { font-weight: 600; }
+    .opt:has(input:checked) { background: var(--morado); color: #fff; border-color: var(--morado); }
+    .opt:has(input:checked) .dot { border-color: #fff; }
+    .opt:has(input:checked) .dot::after {
+      content: ''; position: absolute; inset: 3px; border-radius: 50%; background: #fff;
+    }
+
+    /* ===== BOTONES ===== */
+    .actions { margin-top: 30px; display: grid; gap: 10px; }
+    .btn {
+      background: linear-gradient(135deg, #00b8d8 0%, #0095b3 55%, #007e96 100%);
+      color: #fff; border: none; padding: 17px; width: 100%; border-radius: 50px;
+      font-weight: 600; cursor: pointer; font-size: 16px; transition: 0.2s;
+      box-shadow: 0 4px 15px rgba(0,184,216,0.28);
+      font-family: 'Montserrat', sans-serif; min-height: 56px;
+    }
+    .btn:active { transform: scale(0.98); opacity: 0.92; }
+    .btn.secondary {
+      background: #fff; color: var(--morado); border: 1.5px solid var(--morado-claro);
+      box-shadow: none;
+    }
+    .btn.ghost { background: var(--morado-claro); color: var(--morado); box-shadow: none; }
+
+    /* ===== INFORME (vista de salida) ===== */
+    #report-view { color: var(--negro); }
+    .rep-head { text-align: center; border-bottom: 2px solid var(--morado-claro); padding-bottom: 14px; margin-bottom: 18px; }
+    .rep-title {
+      font-family: 'Playfair Display', serif; color: var(--morado);
+      font-size: 19px; font-weight: 700; margin: 10px 0 2px 0; line-height: 1.3;
+    }
+    .rep-datos {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px;
+      background: var(--dorado-suave); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px;
+      font-size: 13.5px;
+    }
+    @media (max-width: 480px){ .rep-datos { grid-template-columns: 1fr; } }
+    .rep-datos .k { color: var(--gris); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .rep-datos .v { font-weight: 600; margin-top: 1px; }
+    .rep-motivo {
+      display: inline-block; background: var(--celeste-claro); color: var(--celeste-texto);
+      font-weight: 600; font-size: 12.5px; padding: 7px 16px; border-radius: 50px; margin: 4px 0 14px 0;
+    }
+    .rep-block { margin-bottom: 16px; }
+    .rep-block h3 {
+      font-family: 'Playfair Display', serif; color: var(--morado); font-size: 15px;
+      margin: 0 0 4px 0; border-left: 3px solid var(--celeste); padding-left: 9px; font-weight: 600;
+    }
+    .rep-block p { margin: 0; white-space: pre-wrap; font-size: 14px; line-height: 1.6; }
+    .rep-sub { font-family:'Playfair Display',serif; color: var(--celeste-texto); font-size: 15px; font-weight: 600; margin: 22px 0 10px; }
+    .rep-foot { margin-top: 26px; padding-top: 14px; border-top: 1px solid #eee; text-align: center; color: var(--gris); font-size: 11px; letter-spacing: 1px; }
+
+    /* ===== IMPRESIÓN / PDF ===== */
+    @media print {
+      body { background: #fff !important; padding: 0; }
+      .container { box-shadow: none; max-width: 100%; margin: 0; padding: 8px 10px; border-radius: 0; }
+      .no-print { display: none !important; }
+      .rep-block, .rep-datos { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ================= FORMULARIO ================= -->
+    <div id="form-view">
+      <div class="brand-badge"><span class="collab">PSICOLOGÍA · <span class="itaca">ÍTACA CONVERSEMOS</span></span></div>
+      <div class="logo-conver">
+        <div class="nombre">Conver<span class="acento">semos</span></div>
+        <div class="sub">Espacio terapéutico</div>
+      </div>
+
+      <h1>Ficha de Transición y Continuidad Terapéutica</h1>
+      <p class="intro">Completa la ficha y al final genera el informe automáticamente, listo para imprimir, guardar en PDF o compartir.</p>
+
+      <form id="ficha" autocomplete="off">
+
+        <!-- DATOS GENERALES -->
+        <div class="section-header">Datos generales</div>
+        <label class="field-label" for="f_nombre">Nombre del paciente</label>
+        <input type="text" id="f_nombre" placeholder="Nombre y apellidos">
+        <div class="grid-2">
+          <div>
+            <label class="field-label" for="f_edad">Edad</label>
+            <input type="number" id="f_edad" min="0" placeholder="Años">
+          </div>
+          <div>
+            <label class="field-label" for="f_sesiones">N° total de sesiones realizadas</label>
+            <input type="number" id="f_sesiones" min="0" placeholder="Ej. 12">
+          </div>
+        </div>
+        <label class="field-label" for="f_terapeuta">Terapeuta tratante</label>
+        <input type="text" id="f_terapeuta" placeholder="Nombre del profesional">
+        <div class="grid-2">
+          <div>
+            <label class="field-label" for="f_inicio">Fecha de inicio del proceso</label>
+            <input type="date" id="f_inicio">
+          </div>
+          <div>
+            <label class="field-label" for="f_cierre">Fecha de cierre o transición</label>
+            <input type="date" id="f_cierre">
+          </div>
+        </div>
+
+        <!-- MOTIVO -->
+        <div class="section-header">Motivo de la transición</div>
+        <div class="helper">Selecciona una opción. Según tu elección se mostrará abajo la sección específica que corresponde.</div>
+        <div class="opt-list">
+          <label class="opt"><input type="radio" name="motivo" value="Alta terapéutica" data-sec="D"><span class="dot"></span><span class="txt">Alta terapéutica</span></label>
+          <label class="opt"><input type="radio" name="motivo" value="Continuidad de proceso con el mismo terapeuta" data-sec="C"><span class="dot"></span><span class="txt">Continuidad de proceso con el mismo terapeuta</span></label>
+          <label class="opt"><input type="radio" name="motivo" value="Derivación interna del paciente" data-sec="A"><span class="dot"></span><span class="txt">Derivación interna del paciente</span></label>
+          <label class="opt"><input type="radio" name="motivo" value="Interconsulta interna/externa" data-sec="B"><span class="dot"></span><span class="txt">Interconsulta interna / externa</span></label>
+        </div>
+
+        <!-- RESUMEN DEL PROCESO -->
+        <div class="section-header">Informe resumen del proceso</div>
+        <label class="field-label" for="f_objetivos">Objetivos principales trabajados durante el proceso</label>
+        <textarea id="f_objetivos" placeholder="Describe los objetivos principales del proceso terapéutico…"></textarea>
+
+        <label class="field-label" for="f_avances">Principales avances observados</label>
+        <div class="helper">Recursos, aprendizajes, cambios significativos o logros desarrollados.</div>
+        <textarea id="f_avances"></textarea>
+
+        <label class="field-label" for="f_fortalecer">Aspectos que se recomienda continuar fortaleciendo</label>
+        <div class="helper">Temas, habilidades, conductas o áreas que aún requieren seguimiento, práctica o profundización.</div>
+        <textarea id="f_fortalecer"></textarea>
+
+        <label class="field-label" for="f_recomendaciones">Recomendaciones para la siguiente etapa</label>
+        <div class="helper">Orientaciones para favorecer la continuidad o el mantenimiento de los avances alcanzados.</div>
+        <textarea id="f_recomendaciones"></textarea>
+
+        <label class="field-label" for="f_herramientas">Herramientas recomendadas para el paciente</label>
+        <div class="helper">Herramientas, materiales o recursos terapéuticos para acompañar su proceso posterior.</div>
+        <textarea id="f_herramientas"></textarea>
+
+        <label class="field-label" for="f_uso_herramientas">Recomendación de uso de las herramientas</label>
+        <div class="helper">Cómo, cuándo o para qué se recomienda utilizar las herramientas sugeridas.</div>
+        <textarea id="f_uso_herramientas"></textarea>
+
+        <!-- SECCIÓN ESPECÍFICA (condicional) -->
+        <div id="sec-wrap" class="hidden">
+          <div class="section-header celeste">Sección específica según el tipo de transición</div>
+          <div class="helper" id="sec-hint"></div>
+
+          <!-- A. DERIVACIÓN INTERNA -->
+          <div class="sec-block hidden" id="sec-A">
+            <label class="field-label" for="a_profesional">Profesional recomendado</label>
+            <input type="text" id="a_profesional">
+            <label class="field-label" for="a_motivo">Motivo de la derivación o interconsulta</label>
+            <textarea id="a_motivo"></textarea>
+            <label class="field-label" for="a_objetivos">Objetivos sugeridos para la siguiente etapa terapéutica</label>
+            <textarea id="a_objetivos"></textarea>
+            <label class="field-label" for="a_info">Información relevante para el profesional receptor</label>
+            <textarea id="a_info"></textarea>
+          </div>
+
+          <!-- B. INTERCONSULTA -->
+          <div class="sec-block hidden" id="sec-B">
+            <label class="field-label" for="b_profesional">Profesional o especialidad recomendada</label>
+            <input type="text" id="b_profesional">
+            <label class="field-label" for="b_motivo">Motivo de interconsulta</label>
+            <textarea id="b_motivo"></textarea>
+            <label class="field-label" for="b_objetivos">Objetivos o necesidades que se espera abordar mediante la interconsulta</label>
+            <textarea id="b_objetivos"></textarea>
+            <label class="field-label" for="b_recom">Recomendaciones para el trabajo interdisciplinario</label>
+            <textarea id="b_recom"></textarea>
+          </div>
+
+          <!-- C. CONTINUIDAD -->
+          <div class="sec-block hidden" id="sec-C">
+            <label class="field-label" for="c_foco">Nuevo foco terapéutico</label>
+            <textarea id="c_foco"></textarea>
+            <label class="field-label" for="c_objetivos">Objetivos propuestos para la siguiente etapa</label>
+            <textarea id="c_objetivos"></textarea>
+            <label class="field-label" for="c_aspectos">Aspectos relevantes a considerar para la continuidad del proceso</label>
+            <textarea id="c_aspectos"></textarea>
+          </div>
+
+          <!-- D. ALTA -->
+          <div class="sec-block hidden" id="sec-D">
+            <label class="field-label" for="d_logros">Logros principales alcanzados durante el proceso</label>
+            <textarea id="d_logros"></textarea>
+            <label class="field-label" for="d_recursos">Recursos personales que el paciente ha desarrollado y que favorecen su bienestar</label>
+            <textarea id="d_recursos"></textarea>
+            <label class="field-label" for="d_mantener">Recomendaciones para mantener los avances logrados</label>
+            <textarea id="d_mantener"></textarea>
+          </div>
+        </div>
+
+        <!-- SEGUIMIENTO -->
+        <div class="section-header">Seguimiento o frecuencia recomendada</div>
+        <div class="opt-list">
+          <label class="opt"><input type="radio" name="seguimiento" value="No requiere seguimiento programado"><span class="dot"></span><span class="txt">No requiere seguimiento programado</span></label>
+          <label class="opt"><input type="radio" name="seguimiento" value="Seguimiento semanal"><span class="dot"></span><span class="txt">Seguimiento semanal</span></label>
+          <label class="opt"><input type="radio" name="seguimiento" value="Seguimiento quincenal"><span class="dot"></span><span class="txt">Seguimiento quincenal</span></label>
+          <label class="opt"><input type="radio" name="seguimiento" value="Seguimiento mensual"><span class="dot"></span><span class="txt">Seguimiento mensual</span></label>
+          <label class="opt"><input type="radio" name="seguimiento" value="Seguimiento en 3 meses"><span class="dot"></span><span class="txt">Seguimiento en 3 meses</span></label>
+          <label class="opt"><input type="radio" name="seguimiento" value="Seguimiento en 6 meses"><span class="dot"></span><span class="txt">Seguimiento en 6 meses</span></label>
+          <label class="opt"><input type="radio" name="seguimiento" value="Seguimiento según necesidad del paciente"><span class="dot"></span><span class="txt">Seguimiento según necesidad del paciente</span></label>
+        </div>
+        <label class="field-label" for="f_obj_seguimiento">Objetivo del seguimiento (si aplica)</label>
+        <textarea id="f_obj_seguimiento"></textarea>
+
+        <!-- OBSERVACIONES -->
+        <div class="section-header">Observaciones finales</div>
+        <div class="helper">Información adicional relevante para el paciente, el profesional receptor o la continuidad del proceso.</div>
+        <textarea id="f_observaciones"></textarea>
+        <label class="field-label" for="f_fecha">Fecha</label>
+        <input type="date" id="f_fecha">
+
+        <div class="actions no-print">
+          <button type="button" class="btn" id="btn-generar">Generar informe</button>
+          <button type="button" class="btn ghost" id="btn-limpiar">Limpiar formulario</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ================= INFORME ================= -->
+    <div id="report-view" class="hidden">
+      <div class="rep-head">
+        <div class="brand-badge"><span class="collab">PSICOLOGÍA · <span class="itaca">ÍTACA CONVERSEMOS</span></span></div>
+        <div class="logo-conver"><div class="nombre">Conver<span class="acento">semos</span></div></div>
+        <div class="rep-title">Ficha de Transición y Continuidad Terapéutica</div>
+      </div>
+      <div id="report-body"></div>
+      <div class="rep-foot">CONVERSEMOS · ÍTACA — Documento de uso clínico confidencial</div>
+
+      <div class="actions no-print">
+        <button type="button" class="btn" id="btn-imprimir">Imprimir / Guardar PDF</button>
+        <button type="button" class="btn secondary" id="btn-copiar">Copiar texto</button>
+        <button type="button" class="btn ghost" id="btn-volver">Volver a editar</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var $ = function(id){ return document.getElementById(id); };
+    var SEC_NAMES = {
+      A: 'A. Derivación interna',
+      B: 'B. Interconsulta',
+      C: 'C. Continuidad de proceso con el mismo terapeuta',
+      D: 'D. Alta terapéutica'
+    };
+
+    // --- Mostrar la sección específica según el motivo ---
+    function onMotivo(){
+      var sel = document.querySelector('input[name="motivo"]:checked');
+      var blocks = document.querySelectorAll('.sec-block');
+      for (var i=0;i<blocks.length;i++) blocks[i].classList.add('hidden');
+      if (!sel){ $('sec-wrap').classList.add('hidden'); return; }
+      var sec = sel.getAttribute('data-sec');
+      $('sec-wrap').classList.remove('hidden');
+      $('sec-' + sec).classList.remove('hidden');
+      $('sec-hint').textContent = 'Completa los campos de: ' + SEC_NAMES[sec];
+    }
+    var motivos = document.querySelectorAll('input[name="motivo"]');
+    for (var i=0;i<motivos.length;i++) motivos[i].addEventListener('change', onMotivo);
+
+    // --- Utilidades ---
+    function val(id){ var e = $(id); return e ? e.value.trim() : ''; }
+    function checked(name){ var e = document.querySelector('input[name="'+name+'"]:checked'); return e ? e.value : ''; }
+    function fechaFmt(s){
+      if(!s) return '';
+      var p = s.split('-'); // yyyy-mm-dd
+      if(p.length === 3) return p[2] + '/' + p[1] + '/' + p[0];
+      return s;
+    }
+    function esc(s){
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    // --- Construcción del informe ---
+    function bloque(titulo, valor){
+      if(!valor) return '';
+      return '<div class="rep-block"><h3>'+esc(titulo)+'</h3><p>'+esc(valor)+'</p></div>';
+    }
+
+    function seccionEspecificaHTML(secKey){
+      var html = '';
+      if(secKey === 'A'){
+        html += bloque('Profesional recomendado', val('a_profesional'));
+        html += bloque('Motivo de la derivación o interconsulta', val('a_motivo'));
+        html += bloque('Objetivos sugeridos para la siguiente etapa terapéutica', val('a_objetivos'));
+        html += bloque('Información relevante para el profesional receptor', val('a_info'));
+      } else if(secKey === 'B'){
+        html += bloque('Profesional o especialidad recomendada', val('b_profesional'));
+        html += bloque('Motivo de interconsulta', val('b_motivo'));
+        html += bloque('Objetivos o necesidades a abordar mediante la interconsulta', val('b_objetivos'));
+        html += bloque('Recomendaciones para el trabajo interdisciplinario', val('b_recom'));
+      } else if(secKey === 'C'){
+        html += bloque('Nuevo foco terapéutico', val('c_foco'));
+        html += bloque('Objetivos propuestos para la siguiente etapa', val('c_objetivos'));
+        html += bloque('Aspectos relevantes a considerar para la continuidad', val('c_aspectos'));
+      } else if(secKey === 'D'){
+        html += bloque('Logros principales alcanzados durante el proceso', val('d_logros'));
+        html += bloque('Recursos personales desarrollados por el paciente', val('d_recursos'));
+        html += bloque('Recomendaciones para mantener los avances logrados', val('d_mantener'));
+      }
+      return html;
+    }
+
+    function generar(){
+      var nombre = val('f_nombre');
+      if(!nombre){
+        alert('Por favor ingresa al menos el nombre del paciente.');
+        $('f_nombre').focus();
+        return;
+      }
+      var motivoSel = document.querySelector('input[name="motivo"]:checked');
+      var motivo = motivoSel ? motivoSel.value : '';
+      var secKey = motivoSel ? motivoSel.getAttribute('data-sec') : '';
+
+      // Datos generales
+      var datos = [
+        ['Paciente', nombre],
+        ['Edad', val('f_edad') ? val('f_edad') + ' años' : ''],
+        ['Terapeuta tratante', val('f_terapeuta')],
+        ['N° de sesiones', val('f_sesiones')],
+        ['Inicio del proceso', fechaFmt(val('f_inicio'))],
+        ['Cierre / transición', fechaFmt(val('f_cierre'))]
+      ];
+      var datosHTML = '';
+      for(var i=0;i<datos.length;i++){
+        if(datos[i][1]) datosHTML += '<div><div class="k">'+esc(datos[i][0])+'</div><div class="v">'+esc(datos[i][1])+'</div></div>';
+      }
+
+      var html = '';
+      html += '<div class="rep-datos">'+datosHTML+'</div>';
+      if(motivo) html += '<div style="text-align:center"><span class="rep-motivo">Motivo: '+esc(motivo)+'</span></div>';
+
+      html += bloque('Objetivos principales trabajados', val('f_objetivos'));
+      html += bloque('Principales avances observados', val('f_avances'));
+      html += bloque('Aspectos a continuar fortaleciendo', val('f_fortalecer'));
+      html += bloque('Recomendaciones para la siguiente etapa', val('f_recomendaciones'));
+      html += bloque('Herramientas recomendadas para el paciente', val('f_herramientas'));
+      html += bloque('Recomendación de uso de las herramientas', val('f_uso_herramientas'));
+
+      if(secKey){
+        var secHTML = seccionEspecificaHTML(secKey);
+        if(secHTML) html += '<div class="rep-sub">'+esc(SEC_NAMES[secKey])+'</div>' + secHTML;
+      }
+
+      html += bloque('Seguimiento o frecuencia recomendada', checked('seguimiento'));
+      html += bloque('Objetivo del seguimiento', val('f_obj_seguimiento'));
+      html += bloque('Observaciones finales', val('f_observaciones'));
+
+      var fecha = fechaFmt(val('f_fecha'));
+      if(fecha) html += '<div class="rep-block"><h3>Fecha</h3><p>'+esc(fecha)+'</p></div>';
+
+      $('report-body').innerHTML = html;
+      $('form-view').classList.add('hidden');
+      $('report-view').classList.remove('hidden');
+      window.scrollTo(0,0);
+    }
+
+    // --- Texto plano para copiar ---
+    function texto(){
+      var L = [];
+      L.push('FICHA DE TRANSICIÓN Y CONTINUIDAD TERAPÉUTICA — CONVERSEMOS');
+      L.push('');
+      function add(t,v){ if(v){ L.push(t.toUpperCase()); L.push(v); L.push(''); } }
+      add('Paciente', val('f_nombre'));
+      add('Edad', val('f_edad') ? val('f_edad')+' años' : '');
+      add('Terapeuta tratante', val('f_terapeuta'));
+      add('N° de sesiones', val('f_sesiones'));
+      add('Inicio del proceso', fechaFmt(val('f_inicio')));
+      add('Cierre / transición', fechaFmt(val('f_cierre')));
+      add('Motivo de la transición', checked('motivo'));
+      add('Objetivos principales trabajados', val('f_objetivos'));
+      add('Principales avances observados', val('f_avances'));
+      add('Aspectos a continuar fortaleciendo', val('f_fortalecer'));
+      add('Recomendaciones para la siguiente etapa', val('f_recomendaciones'));
+      add('Herramientas recomendadas para el paciente', val('f_herramientas'));
+      add('Recomendación de uso de las herramientas', val('f_uso_herramientas'));
+
+      var motivoSel = document.querySelector('input[name="motivo"]:checked');
+      var secKey = motivoSel ? motivoSel.getAttribute('data-sec') : '';
+      if(secKey === 'A'){
+        add('Profesional recomendado', val('a_profesional'));
+        add('Motivo de la derivación o interconsulta', val('a_motivo'));
+        add('Objetivos sugeridos para la siguiente etapa', val('a_objetivos'));
+        add('Información relevante para el profesional receptor', val('a_info'));
+      } else if(secKey === 'B'){
+        add('Profesional o especialidad recomendada', val('b_profesional'));
+        add('Motivo de interconsulta', val('b_motivo'));
+        add('Objetivos o necesidades a abordar', val('b_objetivos'));
+        add('Recomendaciones para el trabajo interdisciplinario', val('b_recom'));
+      } else if(secKey === 'C'){
+        add('Nuevo foco terapéutico', val('c_foco'));
+        add('Objetivos propuestos para la siguiente etapa', val('c_objetivos'));
+        add('Aspectos relevantes para la continuidad', val('c_aspectos'));
+      } else if(secKey === 'D'){
+        add('Logros principales alcanzados', val('d_logros'));
+        add('Recursos personales desarrollados', val('d_recursos'));
+        add('Recomendaciones para mantener los avances', val('d_mantener'));
+      }
+      add('Seguimiento o frecuencia recomendada', checked('seguimiento'));
+      add('Objetivo del seguimiento', val('f_obj_seguimiento'));
+      add('Observaciones finales', val('f_observaciones'));
+      add('Fecha', fechaFmt(val('f_fecha')));
+      return L.join('\n');
+    }
+
+    function copiar(){
+      var t = texto();
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(t).then(function(){ flash('btn-copiar','✓ Copiado'); },
+          function(){ fallbackCopy(t); });
+      } else { fallbackCopy(t); }
+    }
+    function fallbackCopy(t){
+      var ta = document.createElement('textarea');
+      ta.value = t; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); flash('btn-copiar','✓ Copiado'); } catch(e){ alert('No se pudo copiar automáticamente.'); }
+      document.body.removeChild(ta);
+    }
+    function flash(id, txt){
+      var b = $(id); var orig = b.textContent; b.textContent = txt;
+      setTimeout(function(){ b.textContent = orig; }, 1600);
+    }
+
+    function volver(){
+      $('report-view').classList.add('hidden');
+      $('form-view').classList.remove('hidden');
+      window.scrollTo(0,0);
+    }
+    function limpiar(){
+      if(!confirm('¿Borrar todo el formulario?')) return;
+      $('ficha').reset();
+      onMotivo();
+    }
+
+    $('btn-generar').addEventListener('click', generar);
+    $('btn-limpiar').addEventListener('click', limpiar);
+    $('btn-imprimir').addEventListener('click', function(){ window.print(); });
+    $('btn-copiar').addEventListener('click', copiar);
+    $('btn-volver').addEventListener('click', volver);
+  </script>
+</body>
+</html>
