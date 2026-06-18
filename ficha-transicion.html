@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ficha de Transición y Continuidad Terapéutica — Conversemos</title>
+  <title>Ficha de Transición y Continuidad Terapéutica — Ítaca Conversemos</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -90,9 +90,9 @@
     }
     input[type="text"], input[type="number"], input[type="date"], textarea {
       width: 100%; padding: 13px 14px; margin: 6px 0 4px 0;
-      border: 1.5px solid #e8e0f0; border-radius: 12px;
+      border: 1.5px solid #cfe7ef; border-radius: 12px;
       font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--negro);
-      background: #fcfaff; -webkit-appearance: none; appearance: none;
+      background: #f7fbfc; -webkit-appearance: none; appearance: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     textarea { min-height: 84px; resize: vertical; line-height: 1.55; }
@@ -107,7 +107,7 @@
     .opt-list { display: grid; gap: 8px; margin-top: 4px; }
     .opt {
       display: flex; align-items: center; gap: 10px;
-      padding: 14px 16px; background: #faf8fc; border: 1.5px solid #e8e0f0;
+      padding: 14px 16px; background: #f3fafc; border: 1.5px solid #cfe7ef;
       border-radius: 12px; cursor: pointer; font-size: 14px;
       transition: 0.15s; min-height: 50px;
     }
@@ -168,6 +168,45 @@
     .rep-sub { font-family:'Playfair Display',serif; color: var(--celeste-texto); font-size: 15px; font-weight: 600; margin: 22px 0 10px; }
     .rep-foot { margin-top: 26px; padding-top: 14px; border-top: 1px solid #eee; text-align: center; color: var(--gris); font-size: 11px; letter-spacing: 1px; }
 
+    /* ===== AVISOS / NOTAS / LOGO ===== */
+    .subtitulo-marca {
+      text-align: center; color: var(--celeste); font-weight: 600;
+      font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase;
+      margin: 0 0 16px;
+    }
+    .logo-foto {
+      width: 78px; height: 78px; border-radius: 50%; margin: 2px auto 8px;
+      background: linear-gradient(135deg, var(--celeste) 0%, var(--celeste-oscuro) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0,137,163,0.30); overflow: hidden;
+    }
+    .logo-foto img { width: 100%; height: 100%; object-fit: contain; }
+    .aviso {
+      background: var(--celeste-claro); border: 1px solid #b9e7f3;
+      border-radius: 12px; padding: 13px 15px; margin: 16px 0 4px;
+      font-size: 11.5px; color: #0a5b6b; line-height: 1.55;
+    }
+    .aviso strong { color: var(--celeste-texto); }
+    .aviso p { margin: 0 0 7px; } .aviso p:last-child { margin: 0; }
+    .nota-comp {
+      background: #f5fbfd; border: 1px dashed #b9e7f3; border-radius: 12px;
+      padding: 13px 16px; margin: 22px 0 4px; font-size: 11.5px;
+      color: var(--gris); line-height: 1.55;
+    }
+    .nota-comp h4 {
+      margin: 0 0 6px; color: var(--celeste-texto);
+      font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 600;
+    }
+    .nota-comp ul { margin: 4px 0 0; padding-left: 18px; }
+    .nota-comp li { margin: 2px 0; }
+    .rep-aviso {
+      margin-top: 22px; background: var(--celeste-claro); border-radius: 12px;
+      padding: 14px 16px; font-size: 11px; color: #0a5b6b; line-height: 1.55;
+    }
+    .rep-aviso p { margin: 0 0 9px; } .rep-aviso p:last-child { margin: 0; }
+    .rep-aviso strong { color: var(--celeste-texto); }
+
     /* ===== IMPRESIÓN / PDF ===== */
     @media print {
       body { background: #fff !important; padding: 0; }
@@ -182,14 +221,22 @@
 
     <!-- ================= FORMULARIO ================= -->
     <div id="form-view">
-      <div class="brand-badge"><span class="collab">PSICOLOGÍA · <span class="itaca">ÍTACA CONVERSEMOS</span></span></div>
+      <!-- LOGO OFICIAL: cuando tengas el archivo, reemplaza el monograma por la imagen:
+           <div class="logo-foto"><img src="logo-itaca.png" alt="Ítaca Conversemos"></div> -->
+      <div class="logo-foto">IC</div>
       <div class="logo-conver">
-        <div class="nombre">Conver<span class="acento">semos</span></div>
-        <div class="sub">Espacio terapéutico</div>
+        <div class="nombre">Ítaca <span class="acento">Conversemos</span></div>
+        <div class="sub">Consultorio psicológico</div>
       </div>
 
       <h1>Ficha de Transición y Continuidad Terapéutica</h1>
+      <div class="subtitulo-marca">Continuidad &bull; Derivación &bull; Alta terapéutica</div>
       <p class="intro">Completa la ficha y al final genera el informe automáticamente, listo para imprimir, guardar en PDF o compartir.</p>
+
+      <div class="aviso">
+        <p><strong>Documento de uso interno exclusivo del equipo clínico de Ítaca Conversemos.</strong> Esta ficha es de uso exclusivo de los psicólogos del equipo; no debe compartirse con el paciente ni con otros profesionales.</p>
+        <p>Este documento contiene información clínica confidencial. Su uso está destinado exclusivamente a fines asistenciales relacionados con la continuidad del proceso terapéutico. Su entrega, reproducción o difusión deberá realizarse únicamente con la autorización correspondiente y respetando la confidencialidad del paciente.</p>
+      </div>
 
       <form id="ficha" autocomplete="off">
 
@@ -326,8 +373,20 @@
         <label class="field-label" for="f_fecha">Fecha</label>
         <input type="date" id="f_fecha">
 
+        <div class="nota-comp">
+          <h4>Documentación clínica complementaria</h4>
+          Esta ficha se complementa, según corresponda, con:
+          <ul>
+            <li>Historia clínica.</li>
+            <li>Registro de evolución de sesiones.</li>
+            <li>Informe psicológico (cuando sea solicitado).</li>
+            <li>Resultados de evaluación psicológica (si aplica).</li>
+          </ul>
+        </div>
+
         <div class="actions no-print">
           <button type="button" class="btn" id="btn-generar">Generar informe</button>
+          <button type="button" class="btn secondary" id="btn-ejemplo">Cargar ejemplo</button>
           <button type="button" class="btn ghost" id="btn-limpiar">Limpiar formulario</button>
         </div>
       </form>
@@ -336,12 +395,20 @@
     <!-- ================= INFORME ================= -->
     <div id="report-view" class="hidden">
       <div class="rep-head">
-        <div class="brand-badge"><span class="collab">PSICOLOGÍA · <span class="itaca">ÍTACA CONVERSEMOS</span></span></div>
-        <div class="logo-conver"><div class="nombre">Conver<span class="acento">semos</span></div></div>
+        <div class="logo-foto">IC</div>
+        <div class="logo-conver">
+          <div class="nombre">Ítaca <span class="acento">Conversemos</span></div>
+          <div class="sub">Consultorio psicológico</div>
+        </div>
         <div class="rep-title">Ficha de Transición y Continuidad Terapéutica</div>
       </div>
       <div id="report-body"></div>
-      <div class="rep-foot">CONVERSEMOS · ÍTACA — Documento de uso clínico confidencial</div>
+
+      <div class="rep-aviso">
+        <p>Esta ficha constituye un resumen clínico del proceso terapéutico realizado y tiene como finalidad facilitar la continuidad, derivación o cierre del tratamiento psicológico. <strong>No reemplaza un informe psicológico, informe pericial ni una evaluación psicológica integral</strong>, por lo que no debe utilizarse con fines administrativos, legales, laborales, judiciales o académicos.</p>
+        <p>Este documento contiene información clínica confidencial. Su uso está destinado exclusivamente a fines asistenciales relacionados con la continuidad del proceso terapéutico. Su entrega, reproducción o difusión deberá realizarse únicamente con la autorización correspondiente y respetando la confidencialidad del paciente.</p>
+      </div>
+      <div class="rep-foot">ÍTACA CONVERSEMOS · Consultorio psicológico — Documento de uso interno exclusivo del equipo clínico</div>
 
       <div class="actions no-print">
         <button type="button" class="btn" id="btn-imprimir">Imprimir / Guardar PDF</button>
@@ -475,7 +542,7 @@
     // --- Texto plano para copiar ---
     function texto(){
       var L = [];
-      L.push('FICHA DE TRANSICIÓN Y CONTINUIDAD TERAPÉUTICA — CONVERSEMOS');
+      L.push('FICHA DE TRANSICIÓN Y CONTINUIDAD TERAPÉUTICA — ÍTACA CONVERSEMOS · CONSULTORIO PSICOLÓGICO');
       L.push('');
       function add(t,v){ if(v){ L.push(t.toUpperCase()); L.push(v); L.push(''); } }
       add('Paciente', val('f_nombre'));
@@ -517,6 +584,12 @@
       add('Objetivo del seguimiento', val('f_obj_seguimiento'));
       add('Observaciones finales', val('f_observaciones'));
       add('Fecha', fechaFmt(val('f_fecha')));
+      L.push('————————————————————————');
+      L.push('Esta ficha constituye un resumen clínico del proceso terapéutico realizado y tiene como finalidad facilitar la continuidad, derivación o cierre del tratamiento psicológico. No reemplaza un informe psicológico, informe pericial ni una evaluación psicológica integral, por lo que no debe utilizarse con fines administrativos, legales, laborales, judiciales o académicos.');
+      L.push('');
+      L.push('Este documento contiene información clínica confidencial. Su uso está destinado exclusivamente a fines asistenciales relacionados con la continuidad del proceso terapéutico. Su entrega, reproducción o difusión deberá realizarse únicamente con la autorización correspondiente y respetando la confidencialidad del paciente.');
+      L.push('');
+      L.push('Documento de uso interno exclusivo del equipo clínico de Ítaca Conversemos.');
       return L.join('\n');
     }
 
@@ -549,7 +622,37 @@
       onMotivo();
     }
 
+    // --- Cargar datos de ejemplo (para demo / pruebas) ---
+    function setRadio(name, value){
+      var r = document.querySelector('input[name="'+name+'"][value="'+value+'"]');
+      if(r){ r.checked = true; }
+    }
+    function cargarEjemplo(){
+      var d = {
+        f_nombre:'María de Prueba López', f_edad:'32', f_sesiones:'14',
+        f_terapeuta:'Lic. Gabriela Rentería', f_inicio:'2025-09-02', f_cierre:'2026-06-10',
+        f_objetivos:'Reducir la sintomatología ansiosa y desarrollar estrategias de regulación emocional ante situaciones de estrés laboral.',
+        f_avances:'Mayor identificación de pensamientos automáticos, uso autónomo de técnicas de respiración y reestructuración cognitiva. Disminución notable de la rumiación.',
+        f_fortalecer:'Mantener la práctica de autocuidado y sostener límites saludables en el ámbito laboral.',
+        f_recomendaciones:'Continuar aplicando las herramientas aprendidas y solicitar acompañamiento puntual ante eventos vitales significativos.',
+        f_herramientas:'Registro de emociones, ejercicios de respiración diafragmática y guía de higiene del sueño.',
+        f_uso_herramientas:'Usar el registro de emociones a diario las primeras semanas y la respiración ante picos de ansiedad.',
+        d_logros:'Manejo autónomo de la ansiedad, recuperación de rutinas de descanso y mejora en la comunicación asertiva.',
+        d_recursos:'Capacidad de autoobservación, red de apoyo familiar y motivación al cambio.',
+        d_mantener:'Sostener las rutinas de autocuidado y revisar periódicamente sus objetivos personales.',
+        f_obj_seguimiento:'Verificar el mantenimiento de los avances y prevenir recaídas.',
+        f_observaciones:'La paciente culmina el proceso de forma satisfactoria y colaborativa.',
+        f_fecha:'2026-06-18'
+      };
+      for(var k in d){ if($(k)) $(k).value = d[k]; }
+      setRadio('motivo','Alta terapéutica');
+      setRadio('seguimiento','Seguimiento en 3 meses');
+      onMotivo();
+      window.scrollTo(0,0);
+    }
+
     $('btn-generar').addEventListener('click', generar);
+    $('btn-ejemplo').addEventListener('click', cargarEjemplo);
     $('btn-limpiar').addEventListener('click', limpiar);
     $('btn-imprimir').addEventListener('click', function(){ window.print(); });
     $('btn-copiar').addEventListener('click', copiar);
